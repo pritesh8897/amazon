@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<table id="customers">
+    <tr>
+        <th>product id</th>
+        <th>Mobile brand</th>
+        <th>Model_number</th>
+        <th>serial number</th>
+        <th>Description</th>
+        <th>price</th>
+        <th>Available</th>
+
+    </tr>
+
+    {% for i in filter  %}
+    <tr>
+        <td><a href="{% url 'items:detail_page' i.id %}">{{ i.id }}</a></td>
+        <td>{{i.Brand}}</td>
+        <td>{{i.Model_number}}</td>
+        <td>{{i.serial_number}}</td>
+        <td>{{i.Description}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.Avaible}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock body %}

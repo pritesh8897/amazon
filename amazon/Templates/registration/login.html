@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>Login Form</h2>
+
+<form action="{% url 'login' %}" method="POST">
+
+
+
+
+  <div class="container">
+
+<!--    <label for="uname"><b>Username</b></label>-->
+<!--    <input type="text" placeholder="Enter Username" name="uname" required>-->
+
+<!--    <label for="psw"><b>Password</b></label>-->
+<!--    <input type="password" placeholder="Enter Password" name="psw" required>-->
+
+      {% csrf_token %}
+      {{form.as_p}}
+    <button type="submit">Login</button>
+
+  </div>
+
+<!--  <div class="container" style="background-color:#f1f1f1">-->
+<!--    <button type="button" class="cancelbtn">Cancel</button>-->
+<!--    <span class="psw">Forgot <a href="#">password?</a></span>-->
+<!--  </div>-->
+</form>
+
+<button1><a href="{% url 'signup' %}"> Signup </a> </button1> <br>
+<br>
+<br>
+<button2><a href="{% url 'password_reset' %}"> Forgot password </a> </button2> <br>
+
+{% endblock body %}
