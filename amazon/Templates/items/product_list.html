@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div>
+
+<nav class="navbar navbar-expand-md bg-primary text=danger navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Logo</a>
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Dropdown link
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Link 1</a>
+        <a class="dropdown-item" href="#">Link 2</a>
+        <a class="dropdown-item" href="#">Link 3</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<br>
+</div>
+
+
+<div class="container">
+
+     <div class="row">
+        {% for product in product_list %}
+      <div class="col-lg-3 col-md-6 class="card" style="width: 18rem;">
+
+          {% if product.images %}
+            <img src="{{product.images.url}}" class="img-fluid" alt="Image">
+          {% else %}
+            <img src="{{product.images }}" class="img-fluid" alt="Image">
+          {% endif %}
+         <div class="card-body">
+            <h5 class="card-title">{{product.product.brand.name}}</h5>
+            <p class="card-text">{{product.product.name}}</p>
+             <p>{{product.colors.name}}</p>
+             <p>{{product.product.price}}</p>
+             <div><a href="{% url 'items:product_detail' product.id %}" class="btn btn-primary">Go to Detail</a></div>
+         </div>
+      </div>
+        {% endfor %}
+     </div>
+
+
+</div>
+</body>
+
+{% endblock body %}

@@ -18,6 +18,8 @@ from django.urls import path, include
 from django.contrib.auth.views import (
     LoginView,LogoutView,PasswordResetView,PasswordResetDoneView ,PasswordResetConfirmView,PasswordResetCompleteView)
 from items.views import signupview,LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +34,4 @@ urlpatterns = [
     path('password_reset/confirm/<uidb64>/<token>',PasswordResetConfirmView.as_view(),name = 'password_reset_confirm'),
     path('password_reset/complete',PasswordResetCompleteView.as_view(),name = 'password_reset_complete'),
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
