@@ -3,28 +3,22 @@
 {% block body %}
 
 <div class="container">
-
-     <div class="row">
-
-      <div class="col-lg-3 col-md-6" class="card"  style="width: 18rem;">
-
+<div class="row featurette">
+      <div class="col-md-7 order-md-2">
+       <h5 class="card-title">{{product.product.brand.name}}</h5>
+            <p class="card-text">Name: {{product.product.name}} </p>
+             <p>Color: {{product.colors.name}} </p>
+             <P>Deatil: {{product.product.description}} </P>
+             <p>Price: {{product.product.price}} </p>
+      </div>
+      <div class="col-md-5">
           {% if product.images %}
-            <img src="{{product.images.url}}" class="img-fluid" alt="Image">
+            <img src="{{product.images.url}}" class="img-fluid" alt="Responsive image">
           {% else %}
             <img src="{{product.images }}" class="img-fluid" alt="Image">
           {% endif %}
-         <div class="card-body">
-            <h5 class="card-title">{{product.product.brand.name}}</h5>
-            <p class="card-text">{{product.product.name}}</p>
-             <p>{{product.colors.name}}</p>
-             <P>{{product.product.description}}</P>
-             <p>{{product.product.price}}</p>
-         </div>
       </div>
-
-     </div>
-
-
+</div>
 </div>
 
 {% endblock body %}

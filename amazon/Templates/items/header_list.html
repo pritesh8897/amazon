@@ -1,0 +1,42 @@
+<!--This file is included in base.html-->
+
+<!--Here context are working because this context(categories,brand,product_list) are the parts of Productlist views
+which are mention in views.py. and this context is working here because this file is included in base.html
+and base.html is extended in Productlist's views template product_list.html.(here i used get context method)-->
+
+
+<!--now copy get_context_data from Productlist's views and paste in Productdetail's view.
+ so this navbar is also working like productlist's navbar.-->
+
+
+<!-- Dropdown -->
+    <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Category</a>
+      <div class="dropdown-menu">
+          {% for c in categories %}
+            <a class="dropdown-item" href="{% url 'items:product_filter_category' c.id%}">{{c.name}}</a>
+          {% endfor %}
+      </div>
+    </li>
+
+    <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Brand</a>
+      <div class="dropdown-menu">
+          {% for b in brand %}
+            <a class="dropdown-item" href="{% url 'items:product_filter_brand' b.id%}">{{b.name}}</a>
+          {% endfor %}
+      </div>
+    </li>
+
+
+    <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">All</a>
+      <div class="dropdown-menu">
+          {% for c in categories %}
+            <a class="dropdown-item" href="{% url 'items:product_filter_category' c.id%}">{{c.name}}</a>
+          {% endfor %}
+          {% for b in brand %}
+            <a class="dropdown-item" href="{% url 'items:product_filter_brand' b.id%}">{{b.name}}</a>
+          {% endfor %}
+      </div>
+    </li>
